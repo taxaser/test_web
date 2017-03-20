@@ -1,0 +1,84 @@
+<div class="out-form" style="display: none;">
+    <div class="closed">
+        <a href="javascript:void(0)"></a>
+    </div>
+    <form action="" id="msgForm" onsubmit="return false">
+        <div class="f-title">
+            <h3>在线留言</h3>
+        </div>
+        <div class="form-box">
+            <dl>
+                <dt>
+                    姓名:
+                </dt>
+                <dd>
+                    <input type="text" id="MsgName" placeholder="输入您的姓名" class="text" />
+                </dd>
+            </dl>
+            <dl class="important">
+                <dt>
+                    联系方式
+                </dt>
+                <dd>
+                    <input type="text" id="ContactWay" placeholder="电话或邮箱地址" class="text" />
+                </dd>
+            </dl>
+            <dl class="important">
+                <dt>
+                    留言内容
+                </dt>
+                <dd>
+                    <textarea name="" id="MessageContent" cols="30" rows="10"></textarea>
+                </dd>
+            </dl>
+
+        </div>
+        <div class="out-submit">
+            <input class="submit" value="提交" type="submit">
+            <div class="bg-line"></div>
+        </div>
+    </form>
+</div>
+<script>
+    $("#msgForm").submit(function(){
+        var data = {};
+        data["name"] = $("#MsgName").val();
+        data["contact"] = $("#ContactWay").val();
+        data['message'] = $("#MessageContent").val();
+        $.ajax({
+                    type: 'post',
+                    data: data,
+                    url: '/msg'
+                })
+                .done(function(results){
+                    console.log(results);
+                    if(results.success === 1 ){
+                        alert("添加成功!");
+                        $(".out-form").hide();
+                    }
+                })
+    });
+    $(".leav-msg").click(function (e) {
+        e.preventDefault();
+        $(".out-form").show();
+    })
+    $(".closed").click(function (e) {
+        e.preventDefault();
+        $(".out-form").hide();
+    })
+</script>
+<div class="foot">
+    <div class="lay-out">
+        <div class="logo left">
+            <a href="#">BrightLight New Energy</a>
+        </div>
+        <div class="right-text right">
+            <div class="links">
+                <a href="#">Home</a>|<a href="#">BoutUs</a>|<a href="#">TaoBao</a>|<a href="#">Alibaba</a>
+                <p>Copyright © 2015 BrightLighting New Energy Limited.Tel.:(+86) 186 7501 8307</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script src="/static/www/js/jquery.js"></script>
+    <title><%-title%></title>
+</head>
+<body>
+<div class="top">
+    <div class="logo-box">
+        <div class="lay-out">
+            <div class="logo left">
+                <a href="#" id="logo">BrightLight New Energy</a>
+            </div>
+            <div class="language right">
+                <a href="#" class="chinese hover">简体中文</a>
+                <a href="#" class="english">English</a>
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="nav-box lay-out">
+            <a href="#" class="leav-msg">Online Message</a>
+            <ul class="nav-list">
+                <li class="hover"><a href="/">Home</a></li>
+                <li><a href="/about">About us</a></li>
+                <li>
+                    <a href="/list">Products</a>
+                </li>
+                <!--<li><a href="/quality">Quality</a></li>-->
+                <li><a href="/news">News</a></li>
+                <li><a href="/contact">Contact us</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+

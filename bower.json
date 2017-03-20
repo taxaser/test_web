@@ -1,0 +1,26 @@
+{
+  "name": "jun",
+  "version": "0.0.1",
+  "description": "jun",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "jun"
+  ],
+  "authors": [
+    "taxaser"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/static/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}

@@ -1,0 +1,153 @@
+<%- include ../inc/top.ejs %>
+            <fieldset>
+                <legend>分类列表</legend>
+                <a href="#" data-toggle="modal" data-target="#addModal" type="1" class="btn btn-primary add" style="margin-bottom:20px;">添加分类</a>
+                <table width="100%" class="table text-center table-bordered" border="0" cellspacing="0" cellpadding="3">
+                    <thead>
+                        <tr>
+                            <th scope="col">中文名称</th>
+                            <th scope="col">英文名称</th>
+                            <th scope="col">产品数量</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="text-center">
+                        <% categories.forEach(function (item) { %>
+                            <tr id="item_id_<%= item._id %>">
+                                <td><%= item.chinese_name%></td>
+                                <td><%= item.english_name%></td>
+                                <td>111</td>
+                                <td>
+                                    <!--<a href="/passport/category/update/<%=item._id%>">编辑</a>-->
+                                    <a class="del" data-category="<%= item._id %>" href="#">[删除]</a>
+                                    <a class="add" type="2" data-toggle="modal" data-target="#addModal" data-category="<%= item._id %>" href="#">[添加子分类]</a>
+                                </td>
+                            </tr>
+                            <% if(item.categories.length) {%>
+                                <% item.categories.forEach(function(cat){ %>
+                                    <tr>
+                                        <td style="text-align:left;" colspan="4">
+                                            <table class="table text-center table-striped" border="0" cellspacing="0" cellpadding="3">
+                                                <tbody class="text-center">
+                                                    <tr>
+                                                        <td><%= cat.chinese_name%></td>
+                                                        <td><%= cat.english_name%></td>
+                                                        <td scope="col">100</td>
+                                                        <td>
+                                                            <a class="del" data-category="<%= cat._id %>" href="#">[删除]</a>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                <%})%>
+                            <%}%>
+                        <%})%>
+                    </tbody>
+                </table>
+            </fieldset>
+            <a href="#" data-toggle="modal" data-target="#addModal">增加分类</a>
+<div id="addModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="addForm" action="" onsubmit="return false;">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="chineseName">中文名:</label>
+                        <input type="text" name="chinese_name" id="chineseName" class="form-control">
+                    </div>
+                    <input type="hidden" id="category_id" name="category_id" />
+                    <div class="form-group">
+                        <label for="englishName">英文名:</label>
+                        <input type="text" name="english_name" id="englishName" class="form-control">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-primary btn-large" type="submit" value="提交"  />
+                    <button class="btn btn-success" data-dismiss="modal" type="submit">
+                        关闭
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+    <script>
+        $(".add").click(function (e) {
+            e.preventDefault();
+            var type = $(this).attr("type");
+            var id = $(this).attr("data-category");
+            if(type==1){
+                $("#addModal .modal-header").html("添加分类");
+                $("#addForm").data("type",1);
+            }else{
+                $("#addModal .modal-header").html("添加子分类");
+                $("#category_id").val(id);
+                $("#addForm").data("type",2);
+            }
+        })
+        $("#addForm").submit(function(){
+            var type = $(this).data("type");
+            var data = {};
+            data["chinese_name"] = $("#chineseName").val();
+            data["english_name"] = $("#englishName").val();
+            data['level'] = 1;
+            if(type == 2){
+                data['level'] = 2;
+                data['parent_id'] = $("#category_id").val();
+            }
+            $.ajax({
+                        type: 'post',
+                        data: data,
+                        url: '/passport/category'
+                    })
+                    .done(function(results){
+                        console.log(results);
+                        if(results.success === 1 ){
+                            alert("添加成功!");
+                            location.reload();
+
+                        }
+                    })
+        });
+        $(".del").click(function(e){
+            e.preventDefault();
+            var returnValue = confirm("删除是不可恢复的，你确认要删除吗？");
+            if(!returnValue){
+                return false;
+            }else{
+                var target = $(e.target);
+                //console.log(target);
+                var category_id = target.data('category');
+                var tr = $('#item_id_' + category_id);
+                $.ajax({
+                            type: 'DELETE',
+                            url: '/passport/category/list?id=' + category_id
+                        })
+                        .done(function(results){
+                            console.log(results);
+                            if(results.success === 1 ){
+                                alert("删除成功!");
+                                if(tr.length > 0 ){
+                                    tr.hide(400, function () {
+                                        $(this).remove();
+                                    })
+                                }
+                            }
+                        })
+            }
+
+
+        });
+    </script>
+<%- include ../inc/foot.ejs %>

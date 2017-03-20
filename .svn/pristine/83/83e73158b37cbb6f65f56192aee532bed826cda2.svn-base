@@ -1,0 +1,5 @@
+@import "../public/top";
+@import "./modules/inner-top";
+@import "./modules/top-img";
+@import "./modules/detail-box";
+@import "../public/foot";

@@ -1,0 +1,18 @@
+.box {
+  overflow: hidden;
+}
+.left-column {
+  width: 226px;
+  float: left;
+}
+.left-column .categories-list {
+  line-height: 24px;
+}
+.left-column .categories-list li {
+  padding: 8px 0;
+  border-top: 1;
+}
+.products-box {
+  width: 714px;
+  float: left;
+}

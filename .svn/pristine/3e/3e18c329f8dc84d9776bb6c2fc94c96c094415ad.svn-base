@@ -1,0 +1,32 @@
+<%- include ../inc/top.ejs %>
+<script src="/ueditor/ueditor.config.js"></script>
+<script src="/ueditor/ueditor.all.js"></script>
+<script src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+            <fieldset>
+                <legend>公司简介</legend>
+                <form action="/passport/about" enctype="multipart/form-data"  method="post">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li  class="active">
+                            <a role="tab" data-toggle="tab" href="#chineseAbout">中文简介</a>
+                        </li>
+                        <li>
+                            <a role="tab" data-toggle="tab" href="#englishAbout">英文简介</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="form table-striped" id="chineseAbout">
+                           <textarea id="cn_About" rows="5" name="about" placeholder="" style="height:500px"><%= about %></textarea>
+                        </div>
+                        <div class="form fade table-striped" id="englishAbout">
+                            <textarea id="en_About" rows="5" name="about" placeholder="" style="height:500px"><%= about %></textarea>
+
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
+<script>
+    var cnUe = UE.getEditor('cn_About');
+    var enUe = UE.getEditor('en_About');
+</script>
+<%- include ../inc/foot.ejs %>
+

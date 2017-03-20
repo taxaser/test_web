@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="/static/cp/css/bootstrap/base.css" media="all" type="text/css" rel="stylesheet">
+    <link href="/static/cp/css/page/left_new.css" media="all" type="text/css" rel="stylesheet">
+    <script src="/static/cp/js/jquery.js"></script>
+    <script src="/static/cp/js/sco/sco.collapse.js"></script>
+</head>
+<body>
+<body class="bs-sidebar">
+<div class="wrap">
+    <section class="nav-box">
+        <nav id="navs" class="pane-wrapper">
+            <ul id="tabOne" class="sidenav tab-pane active">
+                <li>
+                    <a data-trigger="collapse" data-parent=".sidenav" class="active" ><span class="glyphicon glyphicon-cog"></span>权限设置</a>
+                    <ol class="collapsible" style="display: block">
+                        <li><a target="main" href="/passport/about">公司简介<span class="line"></span></a></li>
+                        <li><a target="main" href="/passport/items">产品列表<span class="line"></span></a></li>
+                        <li><a target="main" href="/passport/add">产品添加<span class="line"></span></a></li>
+                        <li><a target="main" href="/passport/category/list">分类列表<span class="line"></span></a></li>
+                        <li><a target="main" href="/passport/msg">留言列表<span class="line"></span></a></li>
+                        <li><a target="main" href="/passport/category">分类添加<span class="line"></span></a></li>
+                    </ol>
+                </li>
+                <li>
+                    <a data-trigger="collapse" data-parent=".sidenav"  ><span class="glyphicon glyphicon-cog"></span>系统状态</a>
+                    <ol class="collapsible" style="display: none">
+                        <li><a target="main" href="http://passport.longchen80.com/main/info/phpinfo">phpinfo<span class="line"></span></a></li>
+                        <li><a target="main" href="http://passport.longchen80.com/main/info/clearmemc">清理缓存<span class="line"></span></a></li>
+                    </ol>
+                </li>
+            </ul>
+        </nav>
+    </section>
+</div>
+<script>
+    $(function(){
+        $("#navs ol li a").click(function(){
+            setUrl($(this));
+        });
+        function setUrl(obj){
+            var tag = $(obj).parent("li").parents("ul");
+            $("ol>li",tag).removeClass('hover');
+            $(obj).parent("li").addClass('hover').parents("li").addClass('current').siblings('li').removeClass('current');
+        }
+        $("#navs .sidenav li:first>a").addClass("active");
+        $("#navs .sidenav ol:first").show();
+    })
+</script>
+</body>
+</html>

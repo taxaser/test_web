@@ -1,0 +1,49 @@
+<%- include ../inc/top.ejs %>
+<fieldset>
+    <legend>文章列表</legend>
+    <table width="100%" class="table text-center table-striped" border="0" cellspacing="0" cellpadding="3">
+        <thead>
+        <tr>
+            <th scope="col">文章标题</th>
+            <th scope="col">添加日期</th>
+            <th scope="col">修改日期</th>
+            <th scope="col">操作</th>
+        </tr>
+        </thead>
+
+        <tbody class="text-center">
+        <% text.forEach(function (item) { %>
+        <tr class="item-id-<%= item._id %>">
+            <td><%= item.cn_name %> | <%= item.en_name %></td>
+            <td><%= moment(item.meta.createAt).format('YYYY-M-d h:mm:ss') %></td>
+            <td><%= moment(item.meta.updateAt).format('YYYY-M-d h:mm:ss') %></td>
+            <td>
+                <a href="/passport/text/update/<%=item._id%>">编辑</a>
+                <a class="del" data-id="<%= item._id %>" href="#">删除</a>
+            </td>
+        </tr>
+        <%})%>
+        </tbody>
+    </table>
+</fieldset>
+<script>
+    $(".del").click(function(e){
+        var target = $(e.target);
+        //console.log(target);
+        var id = target.data('id');
+        var tr = $('.item-id-' + id);
+        $.ajax({
+                    type: 'DELETE',
+                    url: '/passport/text/list?id=' + id
+                })
+                .done(function(results){
+                    if(results.success === 1 ){
+                        alert("删除成功!");
+                        if(tr.length > 0 ){
+                            tr.remove();
+                        }
+                    }
+                })
+    });
+</script>
+<%- include ../inc/foot.ejs %>

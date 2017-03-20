@@ -1,0 +1,41 @@
+.block{
+  .title{
+    height:40px;
+    position: relative;
+    margin:15px 0;
+    h2{
+      font:24px/24px "微软雅黑";
+      .left;
+      padding:0 25px 12px 4px;
+      border-bottom:4px #f89f13 solid;
+    }
+    .right-control{
+      .right;
+      margin-top:3px;
+      a{
+        display: inline-block;
+        text-indent:-99999px;
+        width:19px;
+        height:18px;
+        background:url('@{bg_path}/icon.png') no-repeat;
+        &.prev{
+          background-position: 0 -133px;
+          &:hover{
+            background-position: 0 -114px;
+          }
+        }
+        &.next{
+          background-position: -20px -133px;
+          &:hover{
+            background-position: -20px -114px;
+          }
+        }
+      }
+    }
+    .orange-line{
+      position: absolute;
+      bottom:0;
+    }
+    background:url('@{bg_path}/line_bg.gif') left bottom repeat-x;
+  }
+}

@@ -1,0 +1,29 @@
+<div class="arrow-left">
+    <ul class="arrow-list">
+        <% categories.forEach(function (item) { %>
+        <li>
+            <dl>
+
+                <dt><span class="arrow light" data-id="<%= item._id %>"><%= item.english_name %><span></span></span></dt>
+                <% if(item.categories.length) { %>
+                <dd>
+                    <ul>
+                        <% item.categories.forEach(function(cat){ %>
+                        <li data-id="<%= cat._id %>"><a  href="/list?id=<%= cat._id %>"><span class="dot">·</span><%= cat.english_name %></a></li>
+                        <% }) %>
+                    </ul>
+                </dd>
+                <% } %>
+
+            </dl>
+        </li>
+        <% }) %>
+    </ul>
+    <div class="code-box">
+        <a target="_blank" class="qq" href="http://www.taobao.com/webww/ww.php?ver=3&touid=alwayslucky_2008&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.im.alisoft.com/online.aw?v=2&uid=alwayslucky_2008&site=cntaobao&s=1&charset=utf-8" alt="点击这里给我发消息" /></a>
+        <div class="text-box">
+            contact us as soon..
+            <h4>aliwangwang</h4>
+        </div>
+    </div>
+</div>

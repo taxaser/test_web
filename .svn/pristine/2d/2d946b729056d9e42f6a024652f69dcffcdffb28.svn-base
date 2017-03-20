@@ -1,0 +1,52 @@
+<%- include ../inc/top.ejs %>
+<link rel="stylesheet" href="/static/www/css/page/products/list.css">
+<div class="inner-top">
+    <div class="box">
+    </div>
+    <div class="lay-out">
+        <h2>Products</h2>
+
+        <div class="img"></div>
+        <div class="bg"></div>
+    </div>
+</div>
+
+<div class="content lay-out">
+    <div class="box">
+        <%- include ../inc/left.ejs %>
+        <div class="products-box">
+            <div class="product-img">
+                <ul class="product-list">
+                    <% if(product.length){ %>
+                    <% product.forEach(function(item){ %>
+                    <li>
+                        <a href="/detail?id=<%= item._id %>">
+                            <img src="/uploads/<%= item.img_file %>/<%= item.poster[0] %>" alt=""/>
+                        </a>
+                        <h3 class="name"><a href="#"><%= item.english_name %></a></h3>
+                        <div class="text">
+                            <%=item.en_description%>
+                        </div>
+                    </li>
+                    <% }) %>
+                    <% } %>
+                </ul>
+
+
+                <%- include ../inc/pagination.ejs %>
+            </div>
+
+
+        </div>
+
+    </div>
+</div> <!-- contentEnd-->
+<script>
+    var _id = '<%- id %>';
+    $(".arrow-list dd li[data-id="+_id+"]").addClass('hover');
+    function getHover(){
+        $(".arrow-list dd li.hover").parents("li").addClass('hover');
+    }
+    getHover()
+</script>
+<%- include ../inc/foot.ejs %>

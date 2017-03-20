@@ -1,0 +1,34 @@
+<%- include ../inc/top.ejs %>
+<link rel="stylesheet" href="/static/www/css/page/news/detail.css">
+<div class="inner-top">
+    <div class="box">
+    </div>
+    <div class="lay-out">
+        <h2>News</h2>
+
+        <div class="img"></div>
+        <div class="bg"></div>
+    </div>
+
+</div>
+<div class="content lay-out">
+    <%- include ../inc/left.ejs %>
+    <div class="arrow-content">
+        <div class="news-box">
+            <div class="titles">
+                <h3><%-detail.en_name%></h3>
+
+                <p class="msg">
+                    <span class="time">up time:<%= moment(detail.meta.createAt).format('YYYY-M-d h:mm:ss') %></span>
+                </p>
+            </div>
+            <div class="box">
+                <%-detail.en_detail%>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".nav-list li").eq(3).addClass('hover');
+</script>
+<%- include ../inc/foot.ejs %>

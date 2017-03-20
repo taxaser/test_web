@@ -1,0 +1,108 @@
+@import "css3";
+@import "./variables";
+
+body{
+  background: #f2f2f2;
+}
+rBox{
+	position: relative;
+}
+.aBox{
+	position: absolute;
+}
+
+h1{
+	margin:0;
+}
+.borders{
+	.border-radius(5px);
+}
+a{
+	color:@base-color;
+    white-space: nowrap;
+}
+.hover a{
+	color:@hover-color;
+}
+.red{
+  color:red;
+}
+.blue{
+  color:#4391e5;
+}
+.gray{
+  color:#9f9f9f;
+}
+.higher-gray{
+  color:#747474;
+}
+.btn{
+	.border-radius(0);
+}
+.equalHeight{
+  padding-bottom:9999px;
+  margin-bottom:-9999px;
+}
+label{
+  font-weight: normal;
+}
+.clearfix{}
+.clearfix:after{
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.form-group{
+  overflow: hidden;
+  margin-bottom:10px;
+}
+.form-horizontal .control-label{
+  padding-top:4px;
+  .gray;
+}
+.separate{
+  .gray;
+  padding:0 6px;
+}
+.row-fluid .separate{
+  float: left;
+}
+.input-group-sm{
+  > .form-control,> .input-group-addon{
+    border-radius: 0;
+    height:27px;
+  }
+}
+.table{
+  margin-bottom:0;
+  &.basic{
+
+    tr:nth-child(even),thead tr{
+      background:#f5f5f5;
+    }
+    tr th{
+      .gray;
+    }
+    tr td,tr th{
+      line-height:20px;
+      padding:5px;
+      text-align: center;
+      vertical-align: middle;
+      font-weight: normal;
+    }
+    thead tr th{
+      border:0;
+    }
+    td{
+      border:0;
+    }
+  }
+}
+
+
+.form-control{
+  border-radius: 0;
+  height: 28px;
+}

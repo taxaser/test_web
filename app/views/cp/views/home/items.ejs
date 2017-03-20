@@ -1,0 +1,48 @@
+<%- include ../inc/top.ejs %>
+            <fieldset>
+                <legend>产品列表</legend>
+                    <table width="100%" class="table text-center table-striped" border="0" cellspacing="0" cellpadding="3">
+                        <thead>
+                            <tr>
+                                <th scope="col">产品名称</th>
+                                <th scope="col">产品分类</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-center">
+                            <% product.forEach(function (item) { %>
+                                <tr class="item-id-<%= item._id %>">
+                                    <td><%= item.chinese_name %> | <%= item.english_name %></td>
+                                    <td><%= item.category_name %></td>
+                                    <td>
+                                        <a href="/passport/add/update/<%=item._id%>">编辑</a>
+                                        <a data-category="<%= item.category %>" class="del" data-id="<%= item._id %>" href="#">删除</a>
+                                    </td>
+                                </tr>
+                            <%})%>
+                        </tbody>
+                    </table>
+            </fieldset>
+<script>
+    $(".del").click(function(e){
+        var target = $(e.target);
+        //console.log(target);
+        var id = target.data('id');
+        var category_id = target.data('category');
+        var tr = $('.item-id-' + id);
+        $.ajax({
+                    type: 'DELETE',
+                    url: '/passport/product/list?id=' + id + '&category_id=' + category_id
+                })
+                .done(function(results){
+                    if(results.success === 1 ){
+                        alert("删除成功!");
+                        if(tr.length > 0 ){
+                            tr.remove();
+                        }
+                    }
+                })
+    });
+</script>
+<%- include ../inc/foot.ejs %>

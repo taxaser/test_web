@@ -1,0 +1,31 @@
+<%- include ../inc/top.ejs %>
+<fieldset>
+    <legend>分类添加</legend>
+    <form method="post" class="item-add" enctype="multipart/form-data" action="/passport/category" >
+        <% if(category._id) {%>
+            <input type="hidden" name="_id" value="<%= category._id %>" >
+        <% } %>
+        <table class="form table-striped" width="100%">
+            <tbody>
+            <tr>
+                <th><label for="chineseName">分类名称:</label></th>
+                <td>
+                    <input size="30" id="chineseName" class="span12" type="text" name="category[chinese_name]" value="<%= category.chinese_name%>" >
+                </td>
+            </tr>
+            <tr>
+                <th><label for="englishName">英文名称:</label></th>
+                <td>
+                    <input size="30" id="englishName" class="span12" type="text" name="category[english_name]" value="<%= category.english_name%>" >
+                </td>
+            </tr>
+
+            <tr>
+                <th>&nbsp;</th>
+                <td><input class="btn btn-primary btn-large" type="submit" name="" value="提交"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</fieldset>
+<%- include ../inc/foot.ejs %>

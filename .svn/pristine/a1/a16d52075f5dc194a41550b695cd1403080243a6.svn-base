@@ -1,0 +1,33 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var TextSchema = new Schema({
+    chinese_detail:String,
+    english_detail: String
+});
+
+TextSchema.pre('save',function(next){
+    if (this.isNew) {
+        this.meta.createAt = this.meta.updateAt = Date.now();
+    }else{
+        this.meta.updateAt = Date.now();
+    }
+
+    next();
+});
+
+TextSchema.statics = {
+    fetch: function(cb){
+        return this
+            .find({})
+            .sort('meta.updateAt')
+            .exec(cb)
+    },
+    findById: function(id, cb){
+        return this
+            .findOne({_id: id})
+            .exec(cb)
+    }
+};
+
+module.exports = TextSchema;

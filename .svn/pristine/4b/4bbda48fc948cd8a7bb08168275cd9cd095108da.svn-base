@@ -1,0 +1,33 @@
+.pagination {
+  position: relative;
+  margin: 15px 0;
+  text-align: center;
+  overflow: hidden;
+}
+.pagination .current {
+  padding: 0 5px;
+  background: #fff;
+  border: 1px #dedede solid;
+}
+.pagination ul {
+  position: relative;
+}
+.pagination ul li {
+  display: inline;
+  text-align: center;
+  margin-left: 10px;
+}
+.pagination ul li a {
+  color: #999;
+  padding: 0 10px;
+  display: inline-block;
+  line-height: 26px;
+  border: 1px #eee solid;
+  height: 26px;
+  vertical-align: top;
+}
+.pagination ul li.active a {
+  background: none;
+  border: 0;
+  color: #60b410;
+}

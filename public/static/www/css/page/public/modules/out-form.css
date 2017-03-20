@@ -1,0 +1,82 @@
+.out-form {
+  position: absolute;
+  padding: 25px;
+  border: 3px #4ca6dd solid;
+  z-index: 999;
+  width: 630px;
+  background: #fff;
+}
+.out-form .closed {
+  position: absolute;
+  right: -48px;
+  top: -3px;
+  width: 45px;
+  height: 45px;
+  background: #4ca6dd;
+  cursor: pointer;
+}
+.out-form .closed a {
+  background-position: -18px -57px;
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin: 10px 0 0 10px;
+}
+.out-form h3 {
+  font: 18px/30px 'å¾®è½¯é›…é»‘';
+  color: #52a3d9;
+}
+.out-form h4 {
+  margin: 10px 0;
+}
+.out-form .form-box {
+  width: 626px;
+  border: 2px #e9e9e9 solid;
+  height: 213px;
+}
+.out-form .form-box .text {
+  height: 30px;
+  width: 90%;
+  line-height: 30px;
+  padding: 0 5%;
+  border-bottom: 1px #dedede solid;
+}
+.out-form .form-box textarea {
+  width: 616px;
+  border: 0;
+  resize: none;
+  padding: 5px;
+  height: 50px;
+}
+.out-form .form-box dt {
+  height: 29px;
+  border-bottom: 1px #e9e9f2 solid;
+  line-height: 29px;
+  padding-left: 15px;
+  background: #f4f4f7;
+  color: #333;
+}
+.out-form .form-box .important textarea {
+  height: 50px;
+}
+.out-form .form-box .important dt {
+  color: #ff0000;
+}
+.out-form .out-submit {
+  margin-top: 10px;
+  text-align: center;
+  height: 49px;
+}
+.out-form .out-submit .bg-line {
+  height: 2px;
+  overflow: hidden;
+}
+.out-form .out-submit .submit {
+  width: 175px;
+  height: 47px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #f89f13;
+  color: #fff;
+  cursor: pointer;
+}

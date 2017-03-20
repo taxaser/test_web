@@ -1,0 +1,64 @@
+<%- include ../inc/top.ejs %>
+<fieldset>
+    <legend>留言列表</legend>
+    <table width="100%" class="table text-center table-bordered" border="0" cellspacing="0" cellpadding="3">
+        <thead>
+            <tr>
+                <th scope="col">留言时间</th>
+                <th scope="col">联系方式</th>
+                <th scope="col">留言内容</th>
+                <th scope="col">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% msgs.forEach(function (item) { %>
+            <tr id="item_id_<%= item._id %>">
+                <td>
+                    <%=item.name%>
+                </td>
+                <td>
+                    <%=item.contact%>
+                </td>
+                <td>
+                    <%=item.message%>
+                </td>
+                <td>
+                    <a class="del" data-msg="<%= item._id %>" href="#">[删除]</a>
+                </td>
+            </tr>
+        <%})%>
+        </tbody>
+    </table>
+</fieldset>
+<script>
+    $(".del").click(function(e){
+        e.preventDefault();
+        var returnValue = confirm("删除是不可恢复的，你确认要删除吗？");
+        if(!returnValue){
+            return false;
+        }else{
+            var target = $(e.target);
+            //console.log(target);
+            var msg_id = target.data('msg');
+            var tr = $('#item_id_' + msg_id);
+            $.ajax({
+                        type: 'DELETE',
+                        url: '/passport/msg/list?id=' + msg_id
+                    })
+                    .done(function(results){
+                        console.log(results);
+                        if(results.success === 1 ){
+                            alert("删除成功!");
+                            if(tr.length > 0 ){
+                                tr.hide(400, function () {
+                                    $(this).remove();
+                                })
+                            }
+                        }
+                    })
+        }
+
+
+    });
+</script>
+<%- include ../inc/foot.ejs %>

@@ -1,0 +1,15 @@
+<%- include ../inc/top.ejs %>
+<link rel="stylesheet" href="/static/www/css/page/about/index.css">
+<div class="inner-top">
+    <div class="box">
+    </div>
+    <div class="lay-out">
+        <h2>联系方式</h2>
+        <div class="img"></div>
+        <div class="bg"></div>
+    </div>
+</div>
+<div class="content lay-out">
+    dads
+</div>
+<%- include ../inc/foot.ejs %>

@@ -1,0 +1,8 @@
+.block .title {
+  padding: 10px 0 20px 0;
+  height: 24px;
+  background: url('@');
+}
+.block .title h2 {
+  font: 24px/30px "微软雅黑";
+}

@@ -1,0 +1,105 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/base";
+@import "../bootstrap/css3";
+@import "../bootstrap/glyphicons";
+*:after{
+	box-sizing:content-box;
+}
+body{
+     background:url('../../img/left_bg.jpg') right 0 repeat-y;
+    font-size:12px;
+}
+.nav-box{
+  li{
+    list-style: none;
+  }
+  float:left;
+  width:189px;
+
+  nav{
+    background: #e8edf0;
+    position: relative;
+
+    &.no-project{
+      margin-left: 0;
+    }
+    ul{
+      margin:0;
+      padding:0;
+      border-bottom:1px #f3f6f7 solid;
+      margin-top:-1px;
+      >li{
+        font:bold 12px/38px "微软雅黑",Helvetica,Arial,sans-serif;
+        border-bottom:1px #D3DCE0 solid;
+        border-top:1px #f3f6f7 solid;
+        &.current{
+          > a{
+            color:#000080;
+            font-weight: bold;
+          }
+        }
+        a{
+          padding-left:30px;
+          color:#313131;
+          text-decoration: none;
+          display: block;
+          height: 38px;
+          cursor: pointer;
+          span{
+            margin-right:5px;
+          }
+          i{
+            width:16px;
+            height:16px;
+            margin-right:10px;
+            &.works{
+              background-position: -29px 0;
+            }
+          }
+        }
+        ol{
+          width:100%;
+          margin:0;
+          display: none;
+          padding:0;
+          >li{
+            a{
+              color:#5d8299;
+              padding-left:56px;
+              position: relative;
+              span.line{
+                top:0;
+                margin:0;
+                position: absolute;
+                width:2px;
+                height: 36px;
+                background:none;
+                right:-1px;
+                display: block;
+                overflow: hidden;
+              }
+            }
+            &.hover{
+              border-bottom:1px #D3DCE0 solid;
+              border-top:1px #D3DCE0 solid;
+              height:36px;
+              a{
+                line-height:36px;
+                height:36px;
+                color:#333;
+                span.line{
+                  background: @body-bg;
+                }
+                padding-left:51px;
+                background: @body-bg;
+                border-left:5px #408ad9 solid;
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+}/*nav-box over*/

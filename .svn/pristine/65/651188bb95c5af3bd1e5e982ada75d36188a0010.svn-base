@@ -1,0 +1,91 @@
+<%- include ../inc/top.ejs %>
+<link rel="stylesheet" href="/static/www/css/page/products/list.css">
+<div class="inner-top">
+    <div class="box">
+    </div>
+    <div class="lay-out">
+        <h2>产品列表</h2>
+        <div class="img"></div>
+        <div class="bg"></div>
+    </div>
+</div>
+<div class="content lay-out">
+    <div class="box">
+        <div class="left-column">
+            <ul class="categories-list">
+                <% categories.forEach(function (item) { %>
+                    <li>
+                        <a href="javascript:void(0)" data-id="<%= item._id%>"><%= item.english_name%></a>
+                        <% if(item.categories.length) {%>
+                            <ol>
+                                <% item.categories.forEach(function(cat){ %>
+                                    <li><a href="/list/<%= cat._id %>"><%= cat.english_name%></a></li>
+                                <%})%>
+                            </ol>
+                        <%}%>
+                    </li>
+                <%})%>
+            </ul>
+        </div>
+        <div class="products-box">
+            <div class="product-img">
+                <ul class="product-list">
+                    <%if(product.length){%>
+                        <% product.forEach(function(item){ %>
+                            <li>
+                                <a href="#">
+                                    <img src="/uploads/<%= item.img_file %>/<%= item.poster[0] %>" alt="">
+                                </a>
+                                <h3 class="name"><a href="#"><%=item.english_name%></a></h3>
+                                <div class="text">
+                                    8mm thickness, 2700K/3200K/4200K/5600K color...
+                                </div>
+                            </li>
+                        <%})%>
+                    <%}%>
+                    <li>
+                        <a href="#">
+                            <img src="http://img1.imgtn.bdimg.com/it/u=504693101,798570236&fm=21&gp=0.jpg" alt="">
+                        </a>
+                        <h3 class="name"><a href="#">Basic Food vacuum sealer</a></h3>
+                        <div class="text">
+                            8mm thickness, 2700K/3200K/4200K/5600K color...
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="http://img1.imgtn.bdimg.com/it/u=504693101,798570236&fm=21&gp=0.jpg" alt="">
+                        </a>
+                        <h3 class="name"><a href="#">Basic Food vacuum sealer</a></h3>
+                        <div class="text">
+                            8mm thickness, 2700K/3200K/4200K/5600K color...
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="http://img1.imgtn.bdimg.com/it/u=504693101,798570236&fm=21&gp=0.jpg" alt="">
+                        </a>
+                        <h3 class="name"><a href="#">Basic Food vacuum sealer</a></h3>
+                        <div class="text">
+                            8mm thickness, 2700K/3200K/4200K/5600K color...
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="http://img1.imgtn.bdimg.com/it/u=504693101,798570236&fm=21&gp=0.jpg" alt="">
+                        </a>
+                        <h3 class="name"><a href="#">Basic Food vacuum sealer</a></h3>
+                        <div class="text">
+                            8mm thickness, 2700K/3200K/4200K/5600K color...
+                        </div>
+                    </li>
+                </ul>
+                <div class="pagination"><ul><li class="previous_page disabled"><a href="#">« 上一页</a></li><li class="active"><a href="#">1</a></li> <li><a href="http://www.jundafuwu.com/news.html?page=2">2</a></li> <li><a href="http://www.jundafuwu.com/news.html?page=3">3</a></li> <li><a href="http://www.jundafuwu.com/news.html?page=4">4</a></li> <li><a href="http://www.jundafuwu.com/news.html?page=5">5</a></li><li class="next_page"><a href="http://www.jundafuwu.com/news.html?page=2">下一页 »</a></li></ul></div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div> <!-- contentEnd-->
+<%- include ../inc/foot.ejs %>

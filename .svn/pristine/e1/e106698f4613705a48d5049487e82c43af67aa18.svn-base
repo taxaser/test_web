@@ -1,0 +1,144 @@
+var Category = require('../../../models/category');
+var Product = require('../../../models/product');
+var _ = require('underscore');
+
+exports.add = function(req, res) {
+    res.render('cp/views/home/category_add',{
+        title: "测试用例",
+        category:{
+        }
+    });
+
+};
+
+exports.update = function (req, res) {
+    var id = req.params.id;
+    if (id) {
+        Category.findById(id,function(err,category){
+            res.render('cp/views/home/category_add',{
+                title:'后台更新页',
+                category:category
+            })
+        })
+    }
+
+}
+
+exports.arry = function(req, res) {
+    Category.fetch(function(err,categories){
+        if (err) {
+            console.log(err);
+        }
+        var categories_arry = [];
+        categories.forEach(function(file){
+            if(file.level==2){
+                file._id = file._id.toString();
+                categories_arry.push(file);
+            }
+        });
+
+        res.json(categories_arry);
+    })
+
+};
+
+exports.list = function(req, res) {
+    Category.fetch(function(err,categories){
+        if (err) {
+            console.log(err);
+        }
+        var categories_arry = [];
+        categories.forEach(function(file){
+            if(file.level==1){
+                for(var i =0;i<categories.length;i++){
+                    var cat = categories[i];
+                    if(cat['level']==2 && String(file._id)==String(cat['parent_id'])){
+                        file['categories'].push(cat);
+                    }
+                }
+                categories_arry.push(file);
+                //console.log(categories_arry)
+            }
+        });
+
+        res.render('cp/views/home/category_list',{
+            title:'iproduct 列表页',
+            categories:categories_arry
+        })
+    })
+
+};
+
+//post saveCategory
+
+exports.save = function(req, res) {
+    var id = req.body._id,
+        categoryObj = req.body,
+        _category;
+    console.log(0)
+    if (id) {
+        Category.findById(id, function(err, category) {
+            if (err) {
+                console.log(err);
+            }
+            _category = _.extend(category, categoryObj);
+            _category.save(function(err, category) {
+                if (err) {
+                    console.log(err);
+                }
+                //res.redirect('/passport/category/list');
+
+            })
+        })
+        res.json({
+            success:1
+        });
+    }
+    else {
+        _category = new Category(categoryObj);
+
+        _category.save(function(err, category) {
+            if (err) {
+                console.log(err);
+            }
+
+            //res.redirect('/passport/category/list');
+        })
+        res.json({
+            success:1
+        });
+    }
+};
+
+
+//post del.
+exports.del = function (req, res) {
+    var id = req.query.id; // 获取id
+    Category.findById(id, function (err, result) {
+        if(err) {
+            console.log(err);
+        }else{
+            var products = result.products;
+            if(products.length){
+                products.forEach(function(item, index){
+                    Product.findById(item, function (err, result) {
+                        if(err){
+                            cosnole.log(err)
+                        }else{
+                            console.log("result:",result);
+                            result.remove();
+                        }
+                    })
+                });
+            }
+            result.remove();
+            res.json({
+                success:1
+            });
+
+
+        }
+
+    })
+};
+

@@ -1,0 +1,54 @@
+<%- include ../inc/top.ejs %>
+<link rel="stylesheet" href="/static/www/css/page/products/detail.css">
+<div class="inner-top">
+    <div class="box">
+    </div>
+    <div class="lay-out">
+        <h2>产品详情</h2>
+
+        <div class="img"></div>
+        <div class="bg"></div>
+    </div>
+</div>
+<div class="content lay-out">
+    <div class="content lay-out">
+
+        <%- include ../inc/left.ejs %>
+        <div class="arrow-content">
+            <div class="top-img">
+                <div class="img-box">
+                    <img src="/uploads/<%= item.img_file %>/<%= item.poster[0] %>" alt=""/>
+                </div>
+                <div class="text-box">
+                    <h3 class="name"><%= item.english_name %></h3>
+
+                    <div class="row">
+                        <div class="tit">Price:</div>
+                        <div class="text"><%= item.prize %></div>
+                    </div>
+                    <div class="row">
+                        <div class="tit">update:</div>
+                        <div class="text"><%= moment(item.meta.createAt).format('YYYY-M-d h:mm:ss') %></div>
+                    </div>
+                    <div class="row">
+                        <div class="tit">description:</div>
+                        <div class="text"><%= item.en_description %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="title">Detail</div>
+                <div class="box">
+                    <%- item.english_detail %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div> <!-- contentEnd-->
+<script>
+    $(".nav-list li").eq(2).addClass('hover');
+</script>
+<%- include ../inc/foot.ejs %>

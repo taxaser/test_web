@@ -1,0 +1,9 @@
+.logo-box {
+  margin-top: 12px;
+}
+.logo-box .logo a {
+  width: 342px;
+  height: 71px;
+  display: block;
+  background: url("@");
+}

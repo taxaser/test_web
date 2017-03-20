@@ -1,0 +1,242 @@
+<%- include ../inc/top.ejs %>
+<script src="/ueditor/ueditor.config.js"></script>
+<script src="/ueditor/ueditor.all.js"></script>
+<script src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+<fieldset>
+    <legend>产品添加</legend>
+    <form method="post" class="item-add" enctype="multipart/form-data" action="/passport/product" onsubmit="return !itemAdd();">
+        <% if(product._id) {%>
+            <input type="hidden" name="_id" value="<%= product._id %>" >
+        <% } %>
+        <ul class="nav nav-tabs" role="tablist">
+            <li  class="active">
+                <a role="tab" data-toggle="tab" href="#chineseText">中文内容</a>
+            </li>
+            <li>
+                <a role="tab" data-toggle="tab" href="#englishText">英文内容</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <table class="form tab-pane active table-striped" id="chineseText" width="100%">
+                <tbody>
+                <tr>
+                    <td>
+                        <label for="chineseName">中文名称:</label>
+                        <input size="30" id="chineseName" class="span12" type="text" name="product[chinese_name]" value="<%= product.chinese_name%>" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="chineseName">首页推荐:</label>
+                        <input size="30" class="span12" type="checkbox" <% if(product.recommend) { %> checked  <%}%>name="product[recommend]" value="1" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="pt_group">分类选择:</label>
+                        <% if(categories.length){ %>
+                        <select class="select-list">
+                            <option value="">选择分类</option>
+                            <% categories.forEach(function (cat) { %>
+                            <% if(product._id) { %>
+                            <option value=<%= cat._id %> <% if ("'"+cat._id+"'" == product.category) { %> selected="selected" <%}%> data-ss=<%= product.category%>><%= cat.chinese_name %></option>
+                            <% } else { %>
+                            <option value=<%= cat._id %> ><%= cat.chinese_name %></option>
+                            <%}%>
+                            <% }) %>
+                        </select>
+                        <select id="otherSelect" name="product[category]">
+
+                        </select>
+                        <input type="hidden" id="imgPoster" name="imgPoster" value="<%= product.poster %>">
+                        <input type="hidden" class="hidden-category" name="product[category_name]" value="<%= product.category_name %>">
+                        <input type="hidden" class="old_category" name="old_category" value="<%= product.category %>">
+                        <input type="hidden" name="product[img_file]" value="<%= product.img_file %>">
+                        <% }else { %>
+                        暂时没有分类,请先 <a href="/passport/category">添加分类</a>
+                        <% } %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>图片上传:</label>
+                        <div id="imgBox" class="form-horizontal">
+                            <%if(!product.poster.length){%>
+                            <p class="form-inline"><input class="span12 form-control" type="file" name="uploadPoster[]"><span class="btn del">删除</span></p> <% } %>
+                        </div>
+                        <a class="btn btn-info btn-xs" id="imgAdd" href="#">增加图片</a>
+                        <div class="row" style="margin-top:20px;">
+                            <%if(product.poster.length){%>
+                            <ul class="list-inline">
+                                <%product.poster.forEach(function (pic,index) { %>
+                                <li id="img<%= index %>">
+                                    <img class="img-thumbnail" src="/uploads/<%= product.img_file %>/<%= pic %>" style="width:140px;height:140px;margin-bottom:10px;" alt="">
+                                    <span class="del-img" data-delid="img<%= index %>" data-id="<%= product._id %>" data-img="<%= pic %>" style="display: block;">删除</span>
+                                </li>
+                                <% }) %>
+                            </ul>
+                            <%}%>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>描述:</label>
+                        <textarea id="cnEditor" rows="5" name="product[chinese_detail]" placeholder="" style="height:500px"><%= product.chinese_detail %></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="tab-pane fade table-striped" id="englishText">
+                <tr>
+                    <td>
+                        <label for="englishName">英文名称:</label><input size="30" id="englishName" class="span12" type="text" name="product[english_name]" value="<%= product.english_name%>" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>英文描述:</label>
+                        <textarea id="enEditor" rows="5" name="product[english_detail]" placeholder="" style="height:500px"><%= product.english_detail %></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <input class="btn btn-primary btn-large" type="submit" name="" value="提交">
+    </form>
+</fieldset>
+
+<script>
+    var cnUe = UE.getEditor('cnEditor');
+    var enUe = UE.getEditor('enEditor');
+    var _key = '<%= product.img_file %>';
+
+    cnUe.ready(function () {
+        cnUe.execCommand('serverparam', function (editor) {
+            return {
+                'key':_key
+            }
+        })
+    })
+    enUe.ready(function () {
+        enUe.execCommand('serverparam', function (editor) {
+            return {
+                'key':_key
+            }
+        })
+    })
+
+    var pic_add= '<p class="form-inline">' +
+            '<input class="span12 form-control" type="file" name="uploadPoster[]">' +
+            '<span class="btn del">删除</span>' +
+            '</p>'
+    $(document).on("click",".del", function () {
+        $(this).parents('.form-inline').remove();
+    })
+    $("#imgAdd").click(function (e) {
+        e.preventDefault();
+        $(pic_add).appendTo("#imgBox");
+    })
+    $("#otherSelect").change(function () {
+        $(".hidden-category").val($(" :selected",this).html());
+    })
+    function itemAdd(){
+        //var items = $("input[name='uploadPoster[]']");
+        if(!$("#otherSelect").val()){
+            alert("请选择分类!");
+            return true;
+        }
+        $("#cnEditor").val(cnUe.getEditor('editor').getContentTxt());
+        $("#enEditor").val(enUe.getEditor('editor').getContentTxt());
+        return false;
+//        if(items.length){
+//            for(var i=0;i<items.length;i++){
+//                console.log($(items[i]).val())
+//                if($(items[i]).val()==''){
+//                    alert("图片地址不能为空");
+//                    $(items[i]).focus();
+//                    return false;
+//                }
+//            }
+//        }
+//        return false;
+    }
+
+    $(".del-img").click(function(e){
+        var target = $(e.target);
+        //console.log(target);
+        var id = target.data('id');
+        var img_id = target.data('img');
+        var tr = $("#"+target.data('delid'));
+        $.ajax({
+                    type: 'DELETE',
+                    url: '/passport/product/img?id=' + id + '&img_id=' + img_id
+                })
+                .done(function(results){
+                    if(results.success === 1 ){
+                        var imgPoster = $("#imgPoster").val();
+                        alert("删除成功!");
+                        if(tr.length > 0 ){
+                            tr.remove();
+                        }
+                    }
+                })
+    });
+    var cat_item;
+    $.ajax({
+        type:"post",
+        url: '/passport/arry'
+    })
+    .done(function (res) {
+        console.log(res);
+        var cat_item = res;
+        var old_category = $(".old_category").val();
+        for(var j=0;j<cat_item.length;j++){
+            if(cat_item[j]._id == old_category){
+                $(".select-list").val(cat_item[j].parent_id);
+                getSelect(cat_item[j].parent_id);
+                $("#otherSelect").val(old_category)
+            }
+        }
+
+        function getSelect(val){
+            var this_val = val;
+            $("#otherSelect").html('<option value=0>请选择分类</option>');
+            for(var i=0;i<cat_item.length;i++){
+                if(cat_item[i].parent_id == this_val){
+                    $("#otherSelect").append('<option value="'+cat_item[i]._id+'">'+cat_item[i].chinese_name+'</option>')
+                }
+            }
+        }
+        $(".select-list").change(function(){
+            getSelect($(this).val())
+        });
+
+
+    })
+//    $(".select-list").change(function(){
+//        var this_val = $(this).val();
+//        for(var i = 0; i<cat_item.length;i++){
+//            console.log(cat_item[i]._id)
+//            if(cat_item[i]._id== this_val){
+//                console.log(21212);
+//            }
+//        }
+//        console.log($(this).val());
+//    })
+//    $(function(){
+//        var old_category = $(".old_category").val();
+//        if(old_category){
+//            console.log($(".select-list option[value="+old_category+"]").val() === old_category)
+//            $(".select-list option[value="+old_category+"]").attr("selected",true);
+//
+//        }
+//    })
+
+
+</script>
+<%- include ../inc/foot.ejs %>

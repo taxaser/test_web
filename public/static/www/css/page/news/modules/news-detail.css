@@ -1,0 +1,22 @@
+.news-box {
+  margin-top: 30px;
+}
+.news-box .titles {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #424242;
+}
+.news-box .titles h3 {
+  font: 24px/1em;
+  margin-bottom: 10px;
+}
+.news-box .titles .msg {
+  color: #acacac;
+}
+.news-box .titles .msg span {
+  padding: 0 15px;
+}
+.news-box p {
+  margin-bottom: 20px;
+  text-indent: 2em;
+}

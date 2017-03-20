@@ -1,0 +1,23 @@
+// Pagination
+
+.pagination-size(@padding-vertical; @padding-horizontal; @font-size; @border-radius) {
+  > ul{
+    > li {
+      > a,
+      > span {
+        padding: @padding-vertical @padding-horizontal;
+        font-size: @font-size;
+      }
+      &:first-child {
+        > a,
+        > span {
+        }
+      }
+      &:last-child {
+        > a,
+        > span {
+        }
+      }
+    }
+  }
+}

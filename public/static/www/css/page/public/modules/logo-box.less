@@ -1,0 +1,36 @@
+.logo-box{
+  height:96px;
+  border-bottom:1px @border-color solid;
+  overflow: hidden;
+  .logo{
+    margin-top:12px;
+    a{
+      width:342px;
+      height:71px;
+      display: block;
+      background: url("@{bg_path}/logo.jpg") no-repeat;
+      text-indent: -100000px;
+    }
+  }
+  .language{
+    margin-top:32px;
+    a{
+      height:32px;
+      padding-left:36px;
+      background: url("@{bg_path}/icon.png") no-repeat;
+      display: inline-block;
+      line-height:36px;
+      margin-left:10px;
+      &.hover{
+        color:#009944;
+        font-weight:bold;
+      }
+      &.chinese{
+        background-position: 0 -46px;
+      }
+      &.english{
+        background-position: 0 -4px;
+      }
+    }
+  }
+}

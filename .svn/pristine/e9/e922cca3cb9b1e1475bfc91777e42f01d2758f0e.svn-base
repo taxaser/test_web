@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link href="/static/cp/css/bootstrap/main.css" media="all" type="text/css" rel="stylesheet">
+    <link href="/static/cp/css/page/top.css" media="all" type="text/css" rel="stylesheet">
+    <script src="/static/cp/js/jquery.js"></script>
+</head>
+<body>
+<header id="header" class="navbar-fixed-top">
+    <h1 class="pull-left">Passport管理后台</h1>
+    <div class="left-btns btn-group pull-left btn-group">
+        <button url="http://passport.longchen80.com/main/default/left/main" onclick="module($(this))" class="btn btn-default btn-primary" type="button">系统设置</button>
+        <button url="http://passport.longchen80.com/main/default/left/admin" onclick="module($(this))" class="btn btn-default" type="button">passport管理</button>
+        <button url="http://passport.longchen80.com/main/default/left/svn" onclick="module($(this))" class="btn btn-default" type="button">svn管理</button>
+        <button url="http://passport.longchen80.com/main/default/left/log" onclick="module($(this))" class="btn btn-default" type="button">日志管理</button>
+    </div>
+    <div class="user-name pull-right">
+        [<a href='javascript:top.location.href="http://passport.longchen80.com/api/home/index"'>首页</a>]
+        [<a target="_parent" href="http://passport.longchen80.com/api/home/logout">退出登陆</a>]
+        <span class="glyphicon glyphicon-user"></span>
+        [账号:<a href="http://passport.longchen80.com/main/default/main" target="main">yangheng</a>]
+    </div>
+</header>
+<script>
+    function module(curBtn){
+        $('.left-btns :button').removeClass('btn-primary');
+        curBtn.addClass('btn-primary');
+        parent.leftFrame.location.href=curBtn.attr('url');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<% if(totalPage > 2) {%>
+<div class="pagination">
+    <ul>
+        <% if(currentPage - 1 > 0){ %>
+        <li class="previous_page disabled"><a href="/<%=page_type%>?page=<%= currentPage - 1 %>">« prev</a></li>
+        <% } %>
+        <% if(totalPage){ %>
+        <% for(var i = 1;i < totalPage;i++){ %>
+        <li <% if(currentPage == i){ %>class="active"
+                <% } %>
+        ><a href="/<%=page_type%>?page=<%= i %>"><%= i %></a></li>
+        <% } %>
+        <% } %>
+        <% if(currentPage + 1 < totalPage){ %>
+        <li class="next_page"><a href="/<%=page_type%>?page=<%= currentPage + 1 %>">next »</a></li>
+        <% } %>
+
+    </ul>
+</div>
+<% } %>

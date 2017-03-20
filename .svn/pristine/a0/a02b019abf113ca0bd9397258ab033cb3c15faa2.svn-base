@@ -1,0 +1,35 @@
+.inner-top{
+  height:76px;
+  position: relative;
+  .box{
+    height:76px;
+    width:100%;
+    position: absolute;
+    z-index: 10;
+    background: url('@{bg_path}/inner_bg.png') repeat-x;
+  }
+  .lay-out{
+    position: relative;
+    z-index: 5;
+  }
+  .bg{
+    position: absolute;
+    z-index: 1;
+    width:343px;
+    height:290px;
+    top:0;
+    right:0;
+    background: url('@{bg_path}/color_line.jpg') repeat-x;
+  }
+  h2{
+    font:30px/36px @font-style;
+    margin-top:20px;
+    float:left;
+  }
+
+}
+
+.content{
+  position: relative;
+  z-index: 8;
+}

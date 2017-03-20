@@ -1,0 +1,79 @@
+<%- include ../inc/top.ejs %>
+<script src="/ueditor/ueditor.config.js"></script>
+<script src="/ueditor/ueditor.all.js"></script>
+<script src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+<fieldset>
+    <legend>新闻</legend>
+    <form action="/passport/news" enctype="multipart/form-data"  method="post">
+        <% if(news._id) {%>
+            <input type="hidden" name="_id" value="<%= news._id %>" >
+        <% } %>
+        <ul class="nav nav-tabs" role="tablist">
+            <li  class="active">
+                <a role="tab" data-toggle="tab" href="#cnText">中文简介</a>
+            </li>
+            <li>
+                <a role="tab" data-toggle="tab" href="#enText">英文简介</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <table class="tab-pane active table-striped" id="cnText" width="100%">
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="chineseName">中文标题:</label>
+                            <input size="30" id="chineseName" class="span12" type="text" name="news[cn_name]" value="<%= news.cn_name%>" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>描述:</label>
+                            <textarea id="cnEditor" rows="5" name="news[cn_detail]" placeholder="" style="height:500px"><%= news.cn_detail %></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="tab-pane fade table-striped" id="enText" width="100%">
+                <tbody>
+                <tr>
+                    <td>
+                        <label for="chineseName">英文标题:</label>
+                        <input size="30" id="enName" class="span12" type="text" name="news[en_name]" value="<%= news.en_name%>" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>描述:</label>
+                        <textarea id="enEditor" rows="5" name="news[en_detail]" placeholder="" style="height:500px"><%= news.en_detail %></textarea>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <input class="btn btn-primary btn-large" type="submit" name="" value="提交">
+    </form>
+</fieldset>
+<script>
+    var cnUe = UE.getEditor('cnEditor');
+    var enUe = UE.getEditor('enEditor');
+
+    var _key = '<%= news.img_file %>';
+
+    cnUe.ready(function () {
+        cnUe.execCommand('serverparam', function (editor) {
+            return {
+                'key':_key
+            }
+        })
+    })
+    enUe.ready(function () {
+        enUe.execCommand('serverparam', function (editor) {
+            return {
+                'key':_key
+            }
+        })
+    })
+</script>
+<%- include ../inc/foot.ejs %>
+

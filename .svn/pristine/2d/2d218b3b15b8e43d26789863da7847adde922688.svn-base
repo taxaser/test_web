@@ -1,0 +1,11 @@
+@import "./v";
+@import "reset";
+@import "../../mixin/lesshat";
+@import "./modules/logo-box";
+@import "./modules/nav";
+@import "./modules/out-form";
+.content{
+  padding:15px 0;
+  position: relative;
+
+}

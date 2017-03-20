@@ -1,0 +1,31 @@
+//index page
+var Text = require('../../../models/text');
+
+exports.index = function(req, res) {
+    res.render('cp/views/home/index',{
+        title: "测试用例"
+    });
+};
+
+
+exports.about = function(req, res) {
+    res.render('cp/views/home/about',{
+        title: "测试用例",
+        about: ""
+    });
+
+};
+
+exports.aboutSave = function(req, res) {
+    id = req.body.about;
+
+
+};
+
+exports.items = function(req, res) {
+    res.render('cp/views/home/items',{
+        title: "测试用例"
+    });
+
+};
+

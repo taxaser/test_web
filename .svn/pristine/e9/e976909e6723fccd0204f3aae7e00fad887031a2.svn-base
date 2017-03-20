@@ -1,0 +1,31 @@
+<%- include ../inc/top.ejs %>
+<link rel="stylesheet" href="/static/www/css/page/news/index.css">
+<div class="inner-top">
+    <div class="box">
+    </div>
+    <div class="lay-out">
+        <h2>News</h2>
+
+        <div class="img"></div>
+        <div class="bg"></div>
+    </div>
+
+</div>
+
+<div class="content lay-out">
+    <%- include ../inc/left.ejs %>
+    <div class="arrow-content">
+        <div class="box">
+            <ul class="news-list">
+                <% news.forEach(function (item) { %>
+                <li>
+                    <a href="/news_detail?id=<%= item._id %>"><%= item.en_name %></a>
+                    <span class="time">[<%= moment(item.meta.createAt).format('YYYY-M-d h:mm:ss') %>]</span>
+                </li>
+                <% }) %>
+            </ul>
+            <%- include ../inc/pagination.ejs %>
+        </div>
+    </div>
+</div>
+<%- include ../inc/foot.ejs %>

@@ -1,0 +1,24 @@
+.product-img {
+  position: relative;
+  height: 202px;
+}
+.product-img ul {
+  position: absolute;
+  margin-left: -12px;
+}
+.product-img ul li {
+  float: left;
+  display: inline;
+  margin-left: 12px;
+  width: 226px;
+  height: 202px;
+  text-align: center;
+}
+.product-img ul li .name {
+  font-size: 15px;
+  margin: 10px 0;
+}
+.product-img ul li img {
+  width: 226px;
+  display: block;
+}

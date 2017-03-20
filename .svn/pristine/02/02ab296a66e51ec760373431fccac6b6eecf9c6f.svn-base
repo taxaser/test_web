@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="/static/cp/css/bootstrap/base.css" media="all" type="text/css" rel="stylesheet">
+    <link href="/static/cp/css/page/left_new.css" media="all" type="text/css" rel="stylesheet">
+    <script src="/static/cp/js/jquery.js"></script>
+    <script src="/static/cp/js/sco/sco.collapse.js"></script>
+</head>
+<body>
+<body class="bs-sidebar">
+<div class="wrap">
+    <section class="nav-box">
+        <nav id="navs" class="pane-wrapper">
+            <ul id="tabOne" class="sidenav tab-pane">
+                <li>
+                    <a data-trigger="collapse" data-parent=".sidenav" ><span class="glyphicon glyphicon-send"></span>产品</a>
+                    <ol class="collapsible" style="display: none">
+
+                        <li><a target="main" href="/passport/items">产品列表<span class="line"></span></a></li>
+                        <li><a target="main" href="/passport/add">产品添加<span class="line"></span></a></li>
+                    </ol>
+                </li>
+                <li>
+                    <a data-trigger="collapse" data-parent=".sidenav"  ><span class="glyphicon glyphicon-th"></span>分类</a>
+                    <ol class="collapsible" style="display: none">
+                        <li><a target="main" href="/passport/category/list">分类列表<span class="line"></span></a></li>
+                        <li><a target="main" href="/passport/category">分类添加<span class="line"></span></a></li>
+                    </ol>
+                </li>
+                <li>
+                    <a data-trigger="collapse" data-parent=".sidenav" ><span class="glyphicon glyphicon-home"></span>企业文化</a>
+                    <ol class="collapsible" style="display: none">
+<!--
+                        <li><a target="main" href="/passport/text">添加文章<span class="line"></span></a></li>
+-->
+                        <li><a target="main" href="/passport/text/list">文章列表<span class="line"></span></a></li>
+                    </ol>
+                </li>
+
+                <li>
+                    <a data-trigger="collapse" data-parent=".sidenav" ><span class="glyphicon glyphicon-book"></span>新闻</a>
+                    <ol class="collapsible" style="display: none">
+                        <li><a target="main" href="/passport/news">添加新闻<span class="line"></span></a></li>
+                        <li><a target="main" href="/passport/news/list">新闻列表<span class="line"></span></a></li>
+                    </ol>
+                </li>
+                <li>
+                    <a data-trigger="collapse" data-parent=".sidenav"  ><span class="glyphicon glyphicon-comment"></span>留言</a>
+                    <ol class="collapsible" style="display: none">
+                        <li><a target="main" href="/passport/msg">留言列表<span class="line"></span></a></li>
+
+                    </ol>
+                </li>
+            </ul>
+        </nav>
+    </section>
+</div>
+<script>
+    $(function(){
+        $("#navs ol li a").click(function(){
+            setUrl($(this));
+        });
+        function setUrl(obj){
+            var tag = $(obj).parent("li").parents("ul");
+            $("ol>li",tag).removeClass('hover');
+            $(obj).parent("li").addClass('hover').parents("li").addClass('current').siblings('li').removeClass('current');
+        }
+        $("#navs .sidenav li:first>a").addClass("active");
+        $("#navs .sidenav ol:first").show();
+    })
+</script>
+</body>
+</html>

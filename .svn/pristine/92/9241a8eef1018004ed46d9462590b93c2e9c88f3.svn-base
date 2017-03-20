@@ -1,0 +1,43 @@
+<%- include ../inc/top.ejs %>
+<link rel="stylesheet" href="/static/www/css/page/products/detail.css">
+<div class="inner-top">
+    <div class="box">
+    </div>
+    <div class="lay-out">
+        <h2>产品详情</h2>
+        <div class="img"></div>
+        <div class="bg"></div>
+    </div>
+</div>
+<div class="content lay-out">
+    <div class="form">
+        <a href="#">首页</a> &gt; <a href="#">产品列表</a> &gt; <%=item.english_name%>
+    </div>
+    <div class="top-img">
+        <div class="img-box">
+            <img src="/uploads/<%= item.img_file %>/<%= item.poster[0] %>" alt=""/>
+        </div>
+        <div class="text-box">
+            <h3 class="name">什么是灯的详情</h3>
+            <div class="row">
+                <div class="tit">价格:</div>
+                <div class="text">面议</div>
+            </div>
+            <div class="row">
+                <div class="tit">发布时间:</div>
+                <div class="text">面议</div>
+            </div>
+            <div class="row">
+                <div class="tit">产品描述:</div>
+                <div class="text">面议</div>
+            </div>
+        </div>
+    </div>
+    <div class="detail">
+        <div class="title">产品详情</div>
+        <div class="box">
+            <%-item.english_detail%>
+        </div>
+    </div>
+</div> <!-- contentEnd-->
+<%- include ../inc/foot.ejs %>

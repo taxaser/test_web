@@ -1,0 +1,8 @@
+.about {
+  padding: 15px 0;
+}
+.about .left-img {
+  width: 422px;
+  height: 264px;
+  background: #000;
+}

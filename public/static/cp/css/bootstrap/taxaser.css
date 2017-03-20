@@ -1,0 +1,69 @@
+body{
+    font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, .lead {
+    font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+}
+#moudle_btn{
+    height: 50px;
+}
+.global a,a.btn{
+    color:#333;
+}
+.global a:hover{
+    color:#666;
+}
+body{
+   font-family: "Microsoft Yahei",Arial,Helvetica,sans-serif;;
+}
+.content{
+    width:95%;
+    margin:0 auto 50px;
+}
+.pure-form legend{
+    font:24px/30px "Microsoft Yahei",Arial,Helvetica,sans-serif;
+    color:#888;
+}
+.pure-table td{
+    font-size: 12px;
+}
+.bs-sidebar{
+    background:#F7F5FA;
+    margin-top:30px;
+}
+.bs-sidebar .nav a{
+    padding:6px 20px;
+    color:#716B7A;
+}
+.bs-sidenav  ul.nav{
+    display: none;
+}
+.bs-sidebar  ul.nav .nav a{
+    font-size:90%;
+    padding:3px 0 3px 30px;
+}
+.bs-sidebar .active .has-ul{
+    font-weight: bold;
+}
+.bs-sidebar .nav .active .nav{
+    display: block;
+}
+.input-group-sm label.control-label{
+    padding-top:3px;
+}
+.table-bordered th{
+    background:#F5F5F5;
+}
+.table-bordered td{
+    font-size:12px;
+}
+small.black{
+    color:#666;
+}
+.row-fluid .col-xs-8 .pagination{
+    margin:0;
+    float: right;
+}
+.top-search .form-group{
+    margin-bottom:10px;
+}

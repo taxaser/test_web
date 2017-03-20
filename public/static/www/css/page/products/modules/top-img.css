@@ -1,0 +1,24 @@
+extend ' .left' has no matches
+extend ' .left' has no matches
+.top-img {
+  overflow: hidden;
+  _zoom: 1;
+  padding: 20px 0;
+}
+.top-img .img-box {
+  width: 330px;
+  margin-right: 20px;
+  padding: 10px;
+  border: 1px #dedede solid;
+}
+.top-img .img-box img {
+  width: 330px;
+  height: 330px;
+  display: block;
+}
+.top-img .text-box {
+  padding-left: 20px;
+}
+.top-img .text-box h3 {
+  font: 20;
+}

@@ -1,0 +1,19 @@
+.about{
+  padding:20px 0 0 0;
+  height:264px;
+  overflow: hidden;
+  .left-img{
+    width:422px;
+    height:264px;
+    background:url('@{bg_path}/about.jpg') center top no-repeat;
+  }
+  .text-box{
+    .tit{
+      height:27px;
+      background:url('@{bg_path}/about_title.jpg') center top no-repeat;
+      margin-bottom:20px;
+    }
+    width:454px;
+    line-height:30px;
+  }
+}

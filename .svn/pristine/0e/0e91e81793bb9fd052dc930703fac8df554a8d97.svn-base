@@ -1,0 +1,107 @@
+<%- include ../inc/top.ejs %>
+    <link rel="stylesheet" href="/static/www/css/page/index/index.css">
+    <script src="/static/www/js/jquery.js"></script>
+    <script src="/static/www/js/scroll.js"></script>
+    <script src="/static/www/js/jqe.js"></script>
+    <div class="index-banner" style="position: relative;">
+        <div class="box">
+            <div class="shadow"></div>
+            <ul>
+                <li><a target="_blank" href="#" style="background: url(http://upload.longchen80.com/advert/index_ad/2016041214338542.jpg) center top no-repeat;"></a></li>
+                <li><a target="_blank" href="#" style="background: url(http://upload.longchen80.com/advert/index_ad/2015091810599639.jpg) center top no-repeat;"></a></li>
+            </ul>
+        </div>
+        <div class="contrl">
+            <div class="lay-out">
+                <ul>
+                    <!--<li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li class="hover"><a href="#"></a></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+<script>
+    $(".index-banner").show_hide_img({
+
+    })
+</script>
+    <div class="content lay-out">
+        <div class="products block"><!-- products -->
+            <div class="title">
+                <h2>Products</h2>
+                <div class="right-control">
+                    <a href="#" class="prev">上一个</a>
+                    <a href="#" class="next">下一个</a>
+                </div>
+                <div class="orange-line"></div>
+            </div>
+            <div class="box">
+                <div class="product-img">
+                    <ul class="product-list">
+                        <%if(product.length){%>
+                            <% product.forEach(function(item){ %>
+                                <li>
+                                    <a href="#">
+                                        <img src="/uploads/<%= item.img_file %>/<%= item.poster[0] %>" alt="">
+                                    </a>
+                                    <h3 class="name"><a href="#"><%=item.english_name%></a></h3>
+                                    <div class="text">
+                                        8mm thickness, 2700K/3200K/4200K/5600K color...
+                                    </div>
+                                </li>
+                            <%})%>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+        </div><!-- productsEnd -->
+        <script>
+            $(".products .product-img").jCarouselLite({
+                auto: 2000,
+                speed: 1000,
+                vertical: false,
+                btnNext: ".next",
+                btnPrev: ".prev",
+                visible:4
+            });
+        </script>
+        <div class="about lay-out">
+            <div class="left-img left">
+
+            </div>
+            <div class="text-box right">
+                <div class="tit"></div>
+                <div class="text">
+                    <p>
+                        BrightLiging New Energy first involved in solar products in 2010,is a professional manufacturer that is concerned with the design,development and production of  solar products, including solar chargers, foldable solar panel chargers, DIY solar panels, solar toys, solar displays.We provide OEM service for worldwide countries, and have been successful in several great projects.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div> <!-- contentEnd-->
+
+
+<script>
+    $('.index-banner').iView({
+        pauseTime: 5000,
+        pauseOnHover: true,
+        directionNav: true,
+        directionNavHide: false,
+        controlNav: true,
+        controlNavNextPrev: false,
+        controlNavTooltip: false,
+        nextLabel: "Próximo",
+        previousLabel: "Anterior",
+        playLabel: "Jugada",
+        pauseLabel: "Pause",
+        timer: "none",
+        timerBg: "#EEE",
+        timerColor: "#000",
+        timerDiameter: 40,
+        timerPadding: 4,
+        timerStroke: 8,
+        timerPosition: "top-right"
+    });
+</script>
+<%- include ../inc/foot.ejs %>
